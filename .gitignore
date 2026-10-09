@@ -1,0 +1,5 @@
+node_modules/
+# 小程序代码上传密钥：绝不进仓库，只放云 VM 的 secrets 目录
+project.private.key
+*.key
+.DS_Store

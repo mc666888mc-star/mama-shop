@@ -1,0 +1,10 @@
+<!-- pages/admin-products/admin-products.wxml -->
+<button class="btn-big" type="primary" bindtap="addProduct">＋ 上架新商品</button>
+<view class="card" wx:for="{{products}}" wx:key="_id">
+  <view class="row"><text class="pname">{{item.name}}</text><text class="price">¥{{item.priceText}}</text></view>
+  <view class="row"><text>库存：{{item.stock}}</text><text>{{item.onSale ? '在售' : '已下架' }}</text></view>
+  <view class="actions">
+    <button size="mini" bindtap="toggleSale" data-id="{{item._id}}">{{item.onSale ? '下架' : '上架' }}</button>
+    <button size="mini" bindtap="editProduct" data-id="{{item._id}}">改价格/改名</button>
+  </view>
+</view>

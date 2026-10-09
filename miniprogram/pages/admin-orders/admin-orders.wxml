@@ -1,0 +1,15 @@
+<!-- pages/admin-orders/admin-orders.wxml -->
+<view class="stat card">
+  <view>今日订单：<text class="bignum">{{todayCount}}</text></view>
+  <view>今日销售额：<text class="bignum">¥{{todaySales}}</text></view>
+</view>
+<view class="card order" wx:for="{{orders}}" wx:key="_id">
+  <view class="row"><text class="pname">{{item.summary}}</text><text class="price">¥{{item.totalText}}</text></view>
+  <view class="row"><text>{{item.address.name}} {{item.address.phone}}</text></view>
+  <view class="row addr">{{item.address.detail}}</view>
+  <view class="actions">
+    <button wx:if="{{item.status===0}}" class="btn-big" type="primary" bindtap="confirmPaid" data-id="{{item._id}}">确认收款 → 待发货</button>
+    <button wx:if="{{item.status===1}}" class="btn-big" type="primary" bindtap="ship" data-id="{{item._id}}">发货</button>
+    <button wx:if="{{item.status===2}}" class="btn-big" bindtap="complete" data-id="{{item._id}}">完成订单</button>
+  </view>
+</view>

@@ -1,0 +1,3 @@
+/* pages/profile/profile.wxss */
+.hello { font-size: 38rpx; font-weight: bold; }
+.menu { display: flex; justify-content: space-between; padding: 28rpx 0; border-bottom: 1rpx solid #f0f0f0; font-size: 36rpx; }

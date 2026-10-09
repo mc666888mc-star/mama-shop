@@ -1,0 +1,27 @@
+/* app.wxss - 全局样式：妈妈辈友好，大字高对比 */
+page {
+  background-color: #f7f7f7;
+  font-size: 32rpx;
+  color: #333;
+}
+
+/* 大按钮：妈妈后台专用 */
+.btn-big {
+  width: 90%;
+  margin: 20rpx auto;
+  padding: 24rpx 0;
+  font-size: 38rpx;
+  border-radius: 16rpx;
+}
+
+.price {
+  color: #e64340;
+  font-weight: bold;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 20rpx;
+  padding: 24rpx;
+}

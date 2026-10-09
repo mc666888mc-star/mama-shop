@@ -1,0 +1,14 @@
+<!-- pages/product/product.wxml -->
+<swiper class="gallery" indicator-dots>
+  <swiper-item wx:for="{{product.images}}" wx:key="*this">
+    <image src="{{item}}" mode="aspectFill" class="big-img"></image>
+  </swiper-item>
+</swiper>
+<view class="card">
+  <view class="price big">¥{{product.priceText}}</view>
+  <view class="pname">{{product.name}}</view>
+  <view class="desc">{{product.desc}}</view>
+</view>
+<view class="buy-bar">
+  <button class="btn-big" type="primary" bindtap="buyNow">立即购买</button>
+</view>

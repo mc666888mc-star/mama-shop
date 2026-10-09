@@ -1,0 +1,4 @@
+/* pages/admin-products/admin-products.wxss */
+.pname { font-size: 38rpx; font-weight: bold; }
+.actions { display: flex; gap: 20rpx; margin-top: 20rpx; }
+.actions button { font-size: 34rpx; }
