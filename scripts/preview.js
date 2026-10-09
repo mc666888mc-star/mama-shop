@@ -1,13 +1,14 @@
 // scripts/preview.js - 云 VM 生成小程序预览二维码（代替开发者工具"预览"按钮）
 // 用法：node scripts/preview.js
-// 需要：真实 AppID + 小程序代码上传密钥（放 ../secrets/project.private.key，绝不进仓库）
+// 需要：真实 AppID + 小程序代码上传密钥
+//   （放 ~/workspace/mama-shop/secrets/project.private.key，仓库外面，绝不进仓库）
 // 输出：preview-qr.png —— 发给 owner，手机微信扫码即打开开发版真机预览
 const path = require('path');
 const fs = require('fs');
 const ci = require('miniprogram-ci');
 
 const APPID = process.env.MINIAPP_APPID || '';
-const KEY_PATH = path.join(__dirname, '..', 'secrets', 'project.private.key');
+const KEY_PATH = path.join(__dirname, '..', '..', 'secrets', 'project.private.key');
 const PROJECT_PATH = path.join(__dirname, '..');
 const OUT = path.join(__dirname, '..', 'preview-qr.png');
 
