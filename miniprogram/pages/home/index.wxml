@@ -1,0 +1,58 @@
+<nav-bar title="{{shopName}}" subtitle="{{slogan}}" large="{{true}}" glass="{{scrolled}}" title-show="{{scrolled}}" />
+
+<view class="pg">
+  <view class="search">
+    <image class="s-ico" src="/images/icons/search.svg" />
+    <input class="s-in" value="{{keyword}}" placeholder="搜索商品" placeholder-class="s-ph" confirm-type="search" bindinput="onInput" />
+    <view wx:if="{{keyword}}" class="s-clear" bindtap="clearKw"><image class="s-clear-ico" src="/images/icons/clear.svg" /></view>
+  </view>
+
+  <block wx:if="{{loading}}">
+    <view class="sk sk-hero"></view>
+    <view class="grid"><view class="sk sk-card"></view><view class="sk sk-card"></view></view>
+  </block>
+
+  <empty wx:elif="{{error}}" icon="bag-lg" title="加载失败" desc="检查一下网络，再试一次" btn="重新加载" bind:action="retry" />
+
+  <block wx:else>
+    <view wx:if="{{hero}}" class="hero" hover-class="press" hover-stay-time="40" bindtap="open" data-id="{{hero._id}}">
+      <view class="hero-img">
+        <thumb src="{{hero.cover}}" emoji="{{hero.emoji}}" tone="{{hero.tone}}" seed="{{hero._id}}" size="240rpx" />
+      </view>
+      <view class="hero-glass glass">
+        <view class="hero-txt">
+          <view class="hero-name ellipsis">{{hero.name}}</view>
+          <view class="hero-price">¥{{hero.priceText}}</view>
+        </view>
+        <view wx:if="{{!hero.soldOut}}" class="add add-lg" hover-class="press" catchtap="quickAdd" data-id="{{hero._id}}">
+          <image class="add-ico" src="/images/icons/plus-white.svg" />
+        </view>
+        <view wx:else class="sold">已售罄</view>
+      </view>
+    </view>
+
+    <view class="grid">
+      <view wx:for="{{rest}}" wx:key="_id" class="item" hover-class="press" hover-stay-time="40" bindtap="open" data-id="{{item._id}}">
+        <view class="sq">
+          <view class="sq-in">
+            <thumb src="{{item.cover}}" emoji="{{item.emoji}}" tone="{{item.tone}}" seed="{{item._id}}" size="120rpx" />
+            <view wx:if="{{item.soldOut}}" class="tag">已售罄</view>
+          </view>
+        </view>
+        <view class="item-body">
+          <view class="item-name ellipsis2">{{item.name}}</view>
+          <view class="item-foot">
+            <view class="item-price">¥{{item.priceText}}</view>
+            <view wx:if="{{!item.soldOut}}" class="add" hover-class="press" catchtap="quickAdd" data-id="{{item._id}}">
+              <image class="add-ico" src="/images/icons/plus-blue.svg" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <empty wx:if="{{!hero && !rest.length}}" icon="bag-lg" title="{{keyword ? '没有找到相关商品' : '商品正在上架中'}}" desc="{{keyword ? '换个词试试，或者直接问问妈妈' : '过几天再来看看'}}" />
+  </block>
+
+  <view class="tab-safe"></view>
+</view>

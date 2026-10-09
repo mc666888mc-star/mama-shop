@@ -1,9 +1,0 @@
-/* pages/home/home.wxss */
-.search-bar { padding: 20rpx; background: #fff; }
-.search-bar input { background: #f0f0f0; border-radius: 40rpx; padding: 16rpx 30rpx; font-size: 32rpx; }
-.product-list { display: flex; flex-wrap: wrap; padding: 10rpx; }
-.product-card { width: 46%; margin: 2%; background: #fff; border-radius: 16rpx; overflow: hidden; }
-.thumb { width: 100%; height: 340rpx; background: #eee; }
-.name { padding: 16rpx; font-size: 30rpx; }
-.price { padding: 0 16rpx 16rpx; font-size: 36rpx; }
-.empty { text-align: center; color: #999; margin-top: 100rpx; }

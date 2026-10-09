@@ -1,0 +1,54 @@
+<nav-bar title="订单管理" back="{{true}}" solid="{{true}}" />
+
+<view class="pg">
+  <view class="stats">
+    <view class="stat"><view class="stat-n">{{todayCount}}</view><view class="stat-l">今日订单</view></view>
+    <view class="stat"><view class="stat-n"><text class="stat-y">¥</text>{{todaySales}}</view><view class="stat-l">今日销售额</view></view>
+  </view>
+
+  <empty wx:if="{{!loading && !orders.length}}" icon="receipt-lg" title="还没有订单" desc="有人下单了，这里会马上出现" />
+
+  <view wx:for="{{orders}}" wx:key="_id" class="o {{item.status === 3 ? 'o-done' : ''}}">
+    <view class="o-top">
+      <view class="o-no">订单 {{item.orderNo}}</view>
+      <view class="o-st s{{item.status}}">{{item.statusText}}</view>
+    </view>
+    <view class="o-time">{{item.timeText}}</view>
+
+    <view class="o-items">
+      <view wx:for="{{item.items}}" wx:for-item="it" wx:key="productId" class="o-line">
+        <view class="o-nm">{{it.name}}</view>
+        <view class="o-q">× {{it.qty}}</view>
+      </view>
+    </view>
+
+    <view class="o-sum">共 {{item.count}} 件，合计 <text class="o-total">¥{{item.totalText}}</text></view>
+
+    <view class="o-addr">
+      <view class="o-addr-main">
+        <view class="o-who">{{item.address.name}}　{{item.address.phone}}</view>
+        <view class="o-where">{{item.address.detail}}</view>
+      </view>
+      <view class="o-call" hover-class="press" bindtap="call" data-phone="{{item.address.phone}}">打电话</view>
+    </view>
+
+    <view wx:if="{{item.remark}}" class="o-remark">买家留言：{{item.remark}}</view>
+    <view wx:if="{{item.expressNo}}" class="o-exp">{{item.expressLabel}}：{{item.expressNo}}</view>
+
+    <view wx:if="{{item.action}}" class="act" hover-class="act-press" bindtap="onAction" data-id="{{item._id}}" data-act="{{item.action}}">{{item.actionText}}</view>
+    <view wx:else class="done-tip">这一单已完成</view>
+  </view>
+
+  <view class="safe"></view>
+</view>
+
+<sheet show="{{sheet}}" title="发货" bind:close="closeSheet">
+  <view class="sh-l">快递单号</view>
+  <input class="sh-in" value="{{express}}" placeholder="把快递单号填在这里" placeholder-class="ph" bindinput="onExpress" cursor-spacing="60" />
+  <view class="sh-l sh-l2">不走快递？点一下</view>
+  <view class="chips">
+    <view class="chip {{express === '同城送货' ? 'chip-on' : ''}}" hover-class="press" bindtap="pick" data-v="同城送货">同城送货</view>
+    <view class="chip {{express === '上门自提' ? 'chip-on' : ''}}" hover-class="press" bindtap="pick" data-v="上门自提">上门自提</view>
+  </view>
+  <view class="act sh-go" hover-class="act-press" bindtap="confirmShip">确认发货</view>
+</sheet>

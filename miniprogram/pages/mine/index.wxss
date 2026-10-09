@@ -1,0 +1,15 @@
+.pg { padding: 0 32rpx; }
+.me { display: flex; align-items: center; padding: 32rpx 32rpx; margin-bottom: 32rpx; border-radius: 40rpx; background: #fff; }
+.me-av { width: 120rpx; height: 120rpx; border-radius: 50%; background: linear-gradient(145deg, #EAF2FF, #CFE1FF); font-size: 60rpx; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.me-main { margin-left: 28rpx; }
+.me-name { font-size: 38rpx; font-weight: 700; }
+.me-sub { margin-top: 4rpx; font-size: 27rpx; color: #6E6E73; }
+.g-title { margin: 12rpx 16rpx 14rpx; font-size: 26rpx; font-weight: 600; color: #6E6E73; }
+.group { margin-bottom: 32rpx; border-radius: 40rpx; background: #fff; overflow: hidden; }
+.r { display: flex; align-items: center; height: 112rpx; padding: 0 32rpx; transition: background 0.15s; }
+.r + .r { position: relative; }
+.r + .r::before { content: ''; position: absolute; left: 32rpx; right: 0; top: 0; height: 1rpx; background: rgba(60, 60, 67, 0.14); }
+.r-press { background: rgba(60, 60, 67, 0.08); }
+.r-t { flex: 1; font-size: 32rpx; }
+.r-badge { height: 48rpx; padding: 0 20rpx; line-height: 48rpx; margin-right: 12rpx; border-radius: 24rpx; background: #FF3B30; color: #fff; font-size: 24rpx; font-weight: 600; }
+.chev { width: 32rpx; height: 32rpx; }

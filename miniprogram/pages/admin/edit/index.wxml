@@ -1,0 +1,60 @@
+<nav-bar title="{{isEdit ? '编辑商品' : '新增商品'}}" back="{{true}}" solid="{{true}}" />
+
+<view class="pg">
+  <view class="tips">
+    <view class="tips-h" hover-class="press" bindtap="toggleTips">
+      <view class="tips-t">怎么拍，商品才好看？</view>
+      <view class="tips-a">{{tipsOpen ? '收起' : '看看'}}</view>
+    </view>
+    <view wx:if="{{tipsOpen}}" class="tips-b">
+      <view class="tip">靠近窗户拍，用白天的自然光，不要开闪光灯。</view>
+      <view class="tip">下面垫一张白纸或干净的桌面，背景越简单越好。</view>
+      <view class="tip">商品放在画面正中间，占满三分之二，系统会自动裁成正方形。</view>
+      <view class="tip">拍之前擦一下镜头，两只手拿稳，再点拍照。</view>
+      <view class="tip">多拍几张：整体一张，细节或包装一张，使用时的样子一张。</view>
+    </view>
+  </view>
+
+  <view class="blk">
+    <view class="lab">商品图片<text class="lab-s">（第一张是封面，最多 {{max}} 张）</text></view>
+    <view class="imgs">
+      <view wx:for="{{images}}" wx:key="*this" class="im" hover-class="press" bindtap="tapImg" data-i="{{index}}">
+        <image class="im-i" src="{{item}}" mode="aspectFill" />
+        <view wx:if="{{index === 0}}" class="im-cover">封面</view>
+      </view>
+      <view wx:if="{{images.length < max}}" class="im im-add" hover-class="press" bindtap="addImg">
+        <image class="im-plus" src="/images/icons/plus-gray.svg" />
+        <view class="im-add-t">添加照片</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="blk">
+    <view class="lab">商品名称</view>
+    <input class="in" value="{{name}}" maxlength="30" placeholder="例如：双面加厚洗碗布" placeholder-class="ph" bindinput="onName" />
+  </view>
+
+  <view class="row2">
+    <view class="blk half">
+      <view class="lab">价格（元）</view>
+      <input class="in" type="digit" value="{{priceStr}}" placeholder="例如 12.9" placeholder-class="ph" bindinput="onPrice" />
+    </view>
+    <view class="blk half">
+      <view class="lab">库存（件）</view>
+      <input class="in" type="number" value="{{stockStr}}" placeholder="例如 50" placeholder-class="ph" bindinput="onStock" />
+    </view>
+  </view>
+
+  <view class="blk">
+    <view class="lab">简单介绍<text class="lab-s">（选填）</text></view>
+    <textarea class="ta" auto-height="{{true}}" maxlength="200" value="{{desc}}" placeholder="写一两句，说说好用在哪里" placeholder-class="ph" bindinput="onDesc" />
+  </view>
+
+  <view class="blk">
+    <view class="sale {{onSale ? 'sale-on' : ''}}" hover-class="press" bindtap="toggleSale">{{onSale ? '保存后马上上架（点一下改成先不上架）' : '先不上架（点一下改成马上上架）'}}</view>
+  </view>
+
+  <view class="safe"></view>
+</view>
+
+<view class="bar"><view class="save {{saving ? 'save-dis' : ''}}" hover-class="save-press" bindtap="save">保存商品</view></view>

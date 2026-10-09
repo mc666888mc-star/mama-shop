@@ -5,9 +5,10 @@
 // 实现时在此函数内调用微信支付 APIv3 统一下单（JSAPI），
 // 返回 { timeStamp, nonceStr, package, signType, paySign} 给前端 wx.requestPayment。
 // 商户密钥/证书走云函数环境变量配置，绝不写进代码、绝不进仓库。
+// 前端切法：miniprogram/utils/config.js 里 payMode 改为 'wxpay'。
 const cloud = require('wx-server-sdk');
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV});
 
 exports.main = async () => {
-return { code: 1, msg: '二期功能：请先完成个体户主体 + 微信支付商户号配置'};
+return { ok: false, msg: '二期功能：请先完成个体户主体 + 微信支付商户号配置'};
 };

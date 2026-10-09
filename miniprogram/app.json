@@ -1,1 +1,41 @@
-{"cloud":true,"pages":["pages/home/home","pages/product/product","pages/checkout/checkout","pages/orders/orders","pages/profile/profile","pages/admin-products/admin-products","pages/admin-orders/admin-orders"],"tabBar":{"backgroundColor":"#ffffff","borderStyle":"black","color":"#888888","list":[{"pagePath":"pages/home/home","text":"首页"},{"pagePath":"pages/orders/orders","text":"订单"},{"pagePath":"pages/profile/profile","text":"我的"}],"selectedColor":"#07c160"},"window":{"backgroundColor":"#f7f7f7","navigationBarBackgroundColor":"#07c160","navigationBarTextStyle":"white","navigationBarTitleText":"妈妈小店"}}
+{
+  "pages": [
+    "pages/home/index",
+    "pages/cart/index",
+    "pages/orders/index",
+    "pages/mine/index",
+    "pages/detail/index",
+    "pages/checkout/index",
+    "pages/pay/index",
+    "pages/admin/orders/index",
+    "pages/admin/products/index",
+    "pages/admin/edit/index"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F5F7",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8E8E93",
+    "selectedColor": "#0071E3",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      { "pagePath": "pages/home/index", "text": "首页" },
+      { "pagePath": "pages/cart/index", "text": "购物车" },
+      { "pagePath": "pages/orders/index", "text": "订单" },
+      { "pagePath": "pages/mine/index", "text": "我的" }
+    ]
+  },
+  "usingComponents": {
+    "nav-bar": "/components/nav-bar/index",
+    "thumb": "/components/thumb/index",
+    "empty": "/components/empty/index",
+    "sheet": "/components/sheet/index",
+    "stepper": "/components/stepper/index"
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,39 @@
+<nav-bar title="付款" back="{{true}}" />
+
+<empty wx:if="{{!loading && !order}}" icon="receipt-lg" title="找不到这个订单" btn="看看我的订单" bind:action="done" />
+
+<view wx:if="{{order}}" class="pg">
+  <view class="top">
+    <view class="ok"><image class="ok-ico" src="/images/icons/check.svg" /></view>
+    <view class="top-t">订单已提交</view>
+    <view class="amount"><text class="yen">¥</text>{{totalText}}</view>
+    <view class="no" hover-class="press" bindtap="copyNo">订单号 {{order.orderNo}}<text class="no-copy">复制</text></view>
+  </view>
+
+  <block wx:if="{{order.status > 0}}">
+    <view class="card steps"><view class="paid">这笔订单已经付过款了，妈妈会尽快安排发货。</view></view>
+  </block>
+
+  <block wx:elif="{{payMode === 'wxpay'}}">
+    <view class="card steps"><view class="paid">点击下方按钮，使用微信支付完成付款。</view></view>
+  </block>
+
+  <block wx:else>
+    <view class="card steps">
+      <view class="s"><view class="s-n">1</view><view class="s-t">打开微信，转账 <text class="s-b">¥{{totalText}}</text> 给妈妈</view></view>
+      <view class="s"><view class="s-n">2</view><view class="s-t">转账备注里写上订单号 <text class="s-b">{{order.orderNo}}</text></view></view>
+      <view class="s"><view class="s-n">3</view><view class="s-t">妈妈确认收到后，就会安排发货</view></view>
+    </view>
+  </block>
+
+  <view wx:if="{{hasContact}}" class="help" hover-class="press" bindtap="contactSeller">转账遇到问题？联系妈妈</view>
+  <view class="safe"></view>
+</view>
+
+<view wx:if="{{order}}" class="bar">
+  <view wx:if="{{order.status === 0 && payMode === 'wxpay'}}" class="btn btn-primary full {{paying ? 'disabled' : ''}}" hover-class="press" bindtap="pay">微信支付 ¥{{totalText}}</view>
+  <block wx:else>
+    <view wx:if="{{order.status === 0}}" class="btn btn-soft half" hover-class="press" bindtap="copyNo">复制订单号</view>
+    <view class="btn btn-primary half" hover-class="press" bindtap="done">{{order.status === 0 ? '我已转账' : '查看订单'}}</view>
+  </block>
+</view>

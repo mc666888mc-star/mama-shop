@@ -1,0 +1,14 @@
+.pg { padding: 24rpx 28rpx 0; }
+.p { display: flex; align-items: center; margin-bottom: 20rpx; padding: 24rpx; border-radius: 40rpx; background: #fff; transition: transform 0.2s, opacity 0.2s; }
+.p-off .p-img, .p-off .p-name, .p-off .p-meta { opacity: 0.5; }
+.p-press { transform: scale(0.98); }
+.p-img { width: 168rpx; height: 168rpx; border-radius: 28rpx; overflow: hidden; flex-shrink: 0; }
+.p-main { flex: 1; min-width: 0; margin-left: 24rpx; }
+.p-name { font-size: 38rpx; font-weight: 700; }
+.p-meta { margin-top: 6rpx; font-size: 32rpx; color: #3A3A3C; }
+.p-tg { margin-top: 16rpx; height: 72rpx; line-height: 72rpx; text-align: center; border-radius: 36rpx; background: rgba(60, 60, 67, 0.10); color: #3A3A3C; font-size: 28rpx; font-weight: 700; transition: transform 0.2s, opacity 0.2s; }
+.p-tg-on { background: rgba(52, 199, 89, 0.16); color: #176B31; }
+.safe { height: calc(220rpx + env(safe-area-inset-bottom)); }
+.bar { position: fixed; left: 28rpx; right: 28rpx; bottom: calc(env(safe-area-inset-bottom) + 24rpx); z-index: 50; }
+.add { height: 120rpx; border-radius: 60rpx; background: #0071E3; color: #fff; font-size: 44rpx; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 10rpx 28rpx rgba(0, 113, 227, 0.30); transition: transform 0.2s, opacity 0.2s; }
+.add-press { transform: scale(0.97); opacity: 0.88; }

@@ -1,0 +1,5 @@
+<view class="st {{small ? 'st-s' : ''}}">
+  <view class="st-b {{value <= min && !small ? 'st-dis' : ''}}" hover-class="st-press" bindtap="minus"><image class="st-i" src="/images/icons/minus.svg" /></view>
+  <view class="st-n">{{value}}</view>
+  <view class="st-b {{value >= max ? 'st-dis' : ''}}" hover-class="st-press" bindtap="plus"><image class="st-i" src="/images/icons/plus-ink.svg" /></view>
+</view>

@@ -1,0 +1,30 @@
+<nav-bar title="我的" large="{{true}}" glass="{{scrolled}}" title-show="{{scrolled}}" />
+
+<view class="pg">
+  <view class="me">
+    <view class="me-av">😊</view>
+    <view class="me-main">
+      <view class="me-name">欢迎光临</view>
+      <view class="me-sub">{{shopName}}</view>
+    </view>
+  </view>
+
+  <view class="group">
+    <view class="r" hover-class="r-press" bindtap="goOrders"><view class="r-t">我的订单</view><image class="chev" src="/images/icons/chevron-right.svg" /></view>
+    <view class="r" hover-class="r-press" bindtap="contact"><view class="r-t">联系卖家</view><image class="chev" src="/images/icons/chevron-right.svg" /></view>
+  </view>
+
+  <block wx:if="{{isAdmin}}">
+    <view class="g-title">妈妈后台</view>
+    <view class="group">
+      <view class="r" hover-class="r-press" bindtap="goAdminOrders">
+        <view class="r-t">订单管理</view>
+        <view wx:if="{{todo > 0}}" class="r-badge">{{todo}} 单待处理</view>
+        <image class="chev" src="/images/icons/chevron-right.svg" />
+      </view>
+      <view class="r" hover-class="r-press" bindtap="goAdminProducts"><view class="r-t">商品管理</view><image class="chev" src="/images/icons/chevron-right.svg" /></view>
+    </view>
+  </block>
+
+  <view class="tab-safe"></view>
+</view>

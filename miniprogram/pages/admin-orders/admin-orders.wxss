@@ -1,5 +1,0 @@
-/* pages/admin-orders/admin-orders.wxss */
-.bignum { font-size: 52rpx; color: #e64340; font-weight: bold; }
-.addr { color: #666; font-size: 30rpx; }
-.order .pname { font-size: 38rpx; }
-.actions { margin-top: 16rpx; }

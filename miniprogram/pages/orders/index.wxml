@@ -1,0 +1,37 @@
+<nav-bar title="订单" large="{{true}}" glass="{{scrolled}}" title-show="{{scrolled}}" />
+
+<view class="pg">
+  <view class="seg">
+    <view class="seg-thumb" style="transform:translateX({{cur * 100}}%);"></view>
+    <view wx:for="{{tabs}}" wx:key="*this" class="seg-i {{cur === index ? 'seg-on' : ''}}" data-i="{{index}}" bindtap="onTab">{{item}}</view>
+  </view>
+
+  <empty wx:if="{{error}}" icon="receipt-lg" title="加载失败" desc="下拉刷新，再试一次" />
+  <empty wx:elif="{{!loading && !list.length}}" icon="receipt-lg" title="{{cur === 0 ? '还没有订单' : '这里还没有订单'}}" desc="{{cur === 0 ? '挑点喜欢的，下单后会出现在这里' : ''}}" btn="{{cur === 0 ? '去逛逛' : ''}}" bind:action="goHome" />
+
+  <view wx:for="{{list}}" wx:key="_id" class="o">
+    <view class="o-top">
+      <view class="o-no">订单 {{item.orderNo}}</view>
+      <view class="o-st s{{item.status}}">{{item.statusText}}</view>
+    </view>
+    <view class="o-time">{{item.timeText}}</view>
+
+    <view wx:for="{{item.items}}" wx:for-item="it" wx:key="productId" class="o-line">
+      <view class="o-img"><thumb src="{{it.image}}" emoji="{{it.emoji}}" tone="{{it.tone}}" seed="{{it.productId}}" size="44rpx" /></view>
+      <view class="o-nm ellipsis2">{{it.name}}</view>
+      <view class="o-right"><view class="o-p">¥{{it.priceText}}</view><view class="o-q">× {{it.qty}}</view></view>
+    </view>
+
+    <view wx:if="{{item.expressNo}}" class="o-exp" hover-class="press" bindtap="copy" data-t="{{item.expressNo}}">
+      <view class="o-exp-t">{{item.expressLabel}}　{{item.expressNo}}</view>
+      <view class="o-exp-c">复制</view>
+    </view>
+
+    <view class="o-foot">
+      <view class="o-sum">共 {{item.count}} 件，合计 <text class="o-total">¥{{item.totalText}}</text></view>
+      <view wx:if="{{item.status === 0}}" class="o-pay" hover-class="press" bindtap="pay" data-id="{{item._id}}">去付款</view>
+    </view>
+  </view>
+
+  <view class="tab-safe"></view>
+</view>

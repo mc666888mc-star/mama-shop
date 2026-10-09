@@ -1,0 +1,39 @@
+<nav-bar title="购物车" large="{{true}}" glass="{{scrolled}}" title-show="{{scrolled}}" />
+
+<view class="pg">
+  <empty wx:if="{{!items.length}}" icon="bag-lg" title="购物车是空的" desc="挑几样喜欢的放进来吧" btn="去逛逛" bind:action="goHome" />
+
+  <view wx:for="{{items}}" wx:key="productId" class="row {{item.invalid ? 'row-off' : ''}}">
+    <view class="ck {{item.checked ? 'ck-on' : ''}}" bindtap="toggle" data-id="{{item.productId}}">
+      <image wx:if="{{item.checked}}" class="ck-ico" src="/images/icons/check.svg" />
+    </view>
+    <view class="row-img" bindtap="open" data-id="{{item.productId}}">
+      <thumb src="{{item.image}}" emoji="{{item.emoji}}" tone="{{item.tone}}" seed="{{item.productId}}" size="72rpx" />
+    </view>
+    <view class="row-main">
+      <view class="row-name ellipsis2">{{item.name}}</view>
+      <view wx:if="{{item.invalid}}" class="row-bad">已下架或售罄</view>
+      <view class="row-foot">
+        <view class="row-price">¥{{item.priceText}}</view>
+        <stepper wx:if="{{!item.invalid}}" small="{{true}}" value="{{item.qty}}" min="{{1}}" max="{{item.stock || 99}}" data-id="{{item.productId}}" bind:change="onQty" bind:under="onUnder" />
+        <view wx:else class="row-rm" hover-class="press" bindtap="remove" data-id="{{item.productId}}">移除</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cart-safe"></view>
+</view>
+
+<view wx:if="{{items.length}}" class="bar glass">
+  <view class="bar-all" hover-class="press" bindtap="toggleAll">
+    <view class="ck {{allChecked ? 'ck-on' : ''}}">
+      <image wx:if="{{allChecked}}" class="ck-ico" src="/images/icons/check.svg" />
+    </view>
+    <view class="bar-all-t">全选</view>
+  </view>
+  <view class="bar-sum">
+    <view class="bar-sum-l">合计</view>
+    <view class="bar-money">¥{{totalText}}</view>
+  </view>
+  <view class="btn btn-primary bar-go {{count ? '' : 'disabled'}}" hover-class="press" bindtap="checkout">去结算{{count ? ' ' + count : ''}}</view>
+</view>

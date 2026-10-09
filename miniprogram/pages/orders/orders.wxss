@@ -1,6 +1,0 @@
-/* pages/orders/orders.wxss */
-.tabs { display: flex; background: #fff; }
-.tab { flex: 1; text-align: center; padding: 24rpx 0; font-size: 32rpx; color: #888; }
-.tab.active { color: #07c160; border-bottom: 4rpx solid #07c160; font-weight: bold; }
-.mono { font-size: 26rpx; color: #888; }
-.empty { text-align: center; color: #999; margin-top: 100rpx; }

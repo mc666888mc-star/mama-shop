@@ -1,0 +1,14 @@
+.sh-wrap { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 900; visibility: hidden; transition: visibility 0s linear 0.35s; }
+.sh-open { visibility: visible; transition-delay: 0s; }
+.sh-mask { position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.30); opacity: 0; transition: opacity 0.3s ease; }
+.sh-open .sh-mask { opacity: 1; }
+.sh-panel { position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box; max-height: 88vh; overflow: auto;
+  padding: 16rpx 40rpx calc(40rpx + env(safe-area-inset-bottom)); border-radius: 56rpx 56rpx 0 0;
+  background: rgba(255, 255, 255, 0.97); box-shadow: 0 -16rpx 60rpx rgba(0, 0, 0, 0.14), inset 0 2rpx 0 rgba(255, 255, 255, 0.95);
+  transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .sh-panel { background: rgba(255, 255, 255, 0.82); -webkit-backdrop-filter: saturate(200%) blur(36px); backdrop-filter: saturate(200%) blur(36px); }
+}
+.sh-open .sh-panel { transform: translateY(0); }
+.sh-grab { width: 72rpx; height: 8rpx; border-radius: 4rpx; background: rgba(60, 60, 67, 0.22); margin: 0 auto 20rpx; }
+.sh-title { font-size: 38rpx; font-weight: 700; color: #1D1D1F; text-align: center; margin-bottom: 28rpx; }

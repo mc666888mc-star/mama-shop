@@ -1,0 +1,20 @@
+<block wx:if="{{mode === 'float'}}">
+  <view class="nb-float" style="top:{{floatTop}}px;" hover-class="nb-press" bindtap="onBack">
+    <image class="nb-float-ico" src="/images/icons/chevron-left.svg" />
+  </view>
+</block>
+<block wx:else>
+  <view class="nb-bar {{glass ? 'nb-on' : ''}} {{solid ? 'nb-solid' : ''}}" style="height:{{totalH}}px;padding-top:{{statusH}}px;">
+    <view class="nb-inner" style="height:{{barH}}px;">
+      <view wx:if="{{back}}" class="nb-back" hover-class="nb-press" bindtap="onBack">
+        <image class="nb-back-ico" src="/images/icons/chevron-left.svg" />
+      </view>
+      <view class="nb-title {{titleShow ? 'nb-show' : ''}}">{{title}}</view>
+    </view>
+  </view>
+  <view style="height:{{totalH}}px;"></view>
+  <view wx:if="{{large}}" class="nb-large">
+    <view class="nb-h1">{{title}}</view>
+    <view wx:if="{{subtitle}}" class="nb-sub">{{subtitle}}</view>
+  </view>
+</block>

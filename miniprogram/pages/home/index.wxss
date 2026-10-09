@@ -1,0 +1,36 @@
+page { background: linear-gradient(180deg, #EAF1FF 0, #F5F5F7 620rpx) no-repeat, #F5F5F7; }
+.pg { padding: 0 32rpx; }
+
+.search { position: relative; height: 84rpx; margin-bottom: 32rpx; border-radius: 24rpx; background: rgba(118, 118, 128, 0.12); display: flex; align-items: center; }
+.s-ico { position: absolute; left: 24rpx; width: 36rpx; height: 36rpx; }
+.s-in { flex: 1; height: 84rpx; padding: 0 72rpx 0 76rpx; font-size: 30rpx; color: #1D1D1F; }
+.s-ph { color: #8E8E93; }
+.s-clear { position: absolute; right: 8rpx; width: 72rpx; height: 72rpx; display: flex; align-items: center; justify-content: center; }
+.s-clear-ico { width: 34rpx; height: 34rpx; }
+
+.sk-hero { height: 560rpx; border-radius: 48rpx; margin-bottom: 28rpx; }
+.sk-card { width: 333rpx; height: 460rpx; }
+
+/* 主推商品：整页唯一的大卡片 + 压在图上的液态玻璃信息条 */
+.hero { position: relative; height: 560rpx; margin-bottom: 28rpx; transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s; }
+.hero-img { position: absolute; left: 0; top: 0; right: 0; bottom: 0; border-radius: 48rpx; overflow: hidden; box-shadow: 0 28rpx 64rpx rgba(0, 40, 120, 0.14); }
+.hero-glass { position: absolute; left: 20rpx; right: 20rpx; bottom: 20rpx; padding: 20rpx 20rpx 20rpx 32rpx; border-radius: 36rpx; display: flex; align-items: center; justify-content: space-between; }
+.hero-txt { flex: 1; min-width: 0; margin-right: 20rpx; }
+.hero-name { font-size: 34rpx; font-weight: 600; color: #1D1D1F; }
+.hero-price { margin-top: 4rpx; font-size: 30rpx; color: #6E6E73; font-weight: 500; }
+.sold { height: 64rpx; padding: 0 28rpx; line-height: 64rpx; border-radius: 32rpx; background: rgba(60, 60, 67, 0.12); color: #6E6E73; font-size: 26rpx; font-weight: 600; }
+
+.add { width: 64rpx; height: 64rpx; border-radius: 50%; background: rgba(0, 113, 227, 0.10); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.add-lg { width: 80rpx; height: 80rpx; background: #0071E3; box-shadow: 0 8rpx 24rpx rgba(0, 113, 227, 0.32); }
+.add-ico { width: 32rpx; height: 32rpx; }
+.add-lg .add-ico { width: 36rpx; height: 36rpx; }
+
+.grid { display: flex; flex-wrap: wrap; justify-content: space-between; }
+.item { width: 333rpx; margin-bottom: 20rpx; border-radius: 40rpx; background: #fff; overflow: hidden; transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s; }
+.sq { position: relative; width: 100%; padding-top: 100%; }
+.sq-in { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
+.tag { position: absolute; left: 16rpx; top: 16rpx; height: 44rpx; padding: 0 18rpx; line-height: 44rpx; border-radius: 22rpx; background: rgba(0, 0, 0, 0.46); color: #fff; font-size: 22rpx; font-weight: 600; }
+.item-body { padding: 20rpx 24rpx 24rpx; }
+.item-name { height: 84rpx; font-size: 28rpx; line-height: 42rpx; color: #1D1D1F; }
+.item-foot { margin-top: 12rpx; display: flex; align-items: center; justify-content: space-between; }
+.item-price { font-size: 34rpx; font-weight: 700; color: #1D1D1F; }

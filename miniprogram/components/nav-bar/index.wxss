@@ -1,0 +1,21 @@
+.nb-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; box-sizing: border-box; background: transparent; transition: background 0.25s ease, box-shadow 0.25s ease; }
+.nb-on { background: rgba(245, 245, 247, 0.92); box-shadow: 0 1rpx 0 rgba(60, 60, 67, 0.14); }
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .nb-on { background: rgba(245, 245, 247, 0.66); -webkit-backdrop-filter: saturate(180%) blur(30px); backdrop-filter: saturate(180%) blur(30px); }
+}
+.nb-solid { background: #fff; box-shadow: 0 1rpx 0 rgba(60, 60, 67, 0.14); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.nb-inner { position: relative; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+.nb-back { position: absolute; left: 12rpx; top: 50%; margin-top: -40rpx; width: 80rpx; height: 80rpx; display: flex; align-items: center; justify-content: center; }
+.nb-back-ico { width: 44rpx; height: 44rpx; }
+.nb-title { max-width: 360rpx; font-size: 34rpx; font-weight: 600; color: #1D1D1F; opacity: 0; transition: opacity 0.2s; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nb-show { opacity: 1; }
+.nb-press { opacity: 0.55; }
+.nb-large { padding: 8rpx 40rpx 24rpx; box-sizing: border-box; }
+.nb-h1 { font-size: 68rpx; font-weight: 700; letter-spacing: -1rpx; line-height: 1.15; color: #1D1D1F; }
+.nb-sub { margin-top: 8rpx; font-size: 28rpx; color: #6E6E73; }
+.nb-float { position: fixed; left: 24rpx; z-index: 100; width: 72rpx; height: 72rpx; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.92); border: 1rpx solid rgba(255, 255, 255, 0.75); box-shadow: 0 8rpx 28rpx rgba(0, 0, 0, 0.16), inset 0 2rpx 0 rgba(255, 255, 255, 0.95); }
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .nb-float { background: rgba(255, 255, 255, 0.58); -webkit-backdrop-filter: saturate(200%) blur(24px); backdrop-filter: saturate(200%) blur(24px); }
+}
+.nb-float-ico { width: 40rpx; height: 40rpx; }

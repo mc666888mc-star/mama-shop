@@ -1,0 +1,14 @@
+.tb-wrap { position: fixed; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom) + 16rpx); display: flex; justify-content: center; pointer-events: none; z-index: 500; }
+.tb-pill { pointer-events: auto; display: flex; align-items: center; height: 112rpx; padding: 10rpx; border-radius: 56rpx; box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.94); border: 1rpx solid rgba(255, 255, 255, 0.8); box-shadow: 0 20rpx 60rpx rgba(0, 0, 0, 0.16), inset 0 2rpx 0 rgba(255, 255, 255, 0.95); }
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .tb-pill { background: linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.54)); -webkit-backdrop-filter: saturate(200%) blur(32px); backdrop-filter: saturate(200%) blur(32px); }
+}
+.tb-item { width: 148rpx; height: 92rpx; border-radius: 46rpx; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; transition: background 0.3s ease, transform 0.2s; }
+.tb-on { background: rgba(0, 113, 227, 0.10); }
+.tb-press { transform: scale(0.94); }
+.tb-ico-wrap { position: relative; width: 44rpx; height: 44rpx; }
+.tb-ico { width: 44rpx; height: 44rpx; display: block; }
+.tb-txt { margin-top: 2rpx; font-size: 22rpx; font-weight: 600; line-height: 1.2; color: #8E8E93; }
+.tb-on .tb-txt { color: #0071E3; }
+.tb-badge { position: absolute; top: -10rpx; right: -22rpx; min-width: 34rpx; height: 34rpx; padding: 0 9rpx; border-radius: 17rpx; background: #FF3B30; color: #fff; font-size: 21rpx; font-weight: 600; line-height: 34rpx; text-align: center; box-sizing: border-box; }

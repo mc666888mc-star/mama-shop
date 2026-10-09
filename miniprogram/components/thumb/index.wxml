@@ -1,0 +1,4 @@
+<view class="th th{{idx}}">
+  <image wx:if="{{src && !failed}}" class="th-img" src="{{src}}" mode="aspectFill" lazy-load binderror="onErr" />
+  <view wx:else class="th-emo" style="font-size:{{size}};">{{emoji}}</view>
+</view>

@@ -1,0 +1,18 @@
+<nav-bar title="商品管理" back="{{true}}" solid="{{true}}" />
+
+<view class="pg">
+  <empty wx:if="{{!loading && !list.length}}" icon="box-lg" title="还没有商品" desc="点下面的“新增商品”，上架第一件" />
+
+  <view wx:for="{{list}}" wx:key="_id" class="p {{item.onSale ? '' : 'p-off'}}" hover-class="p-press" hover-stay-time="40" bindtap="edit" data-id="{{item._id}}">
+    <view class="p-img"><thumb src="{{item.cover}}" emoji="{{item.emoji}}" tone="{{item.tone}}" seed="{{item._id}}" size="64rpx" /></view>
+    <view class="p-main">
+      <view class="p-name ellipsis">{{item.name}}</view>
+      <view class="p-meta">¥{{item.priceText}}　库存 {{item.stock}}</view>
+      <view class="p-tg {{item.onSale ? 'p-tg-on' : ''}}" hover-class="press" catchtap="toggle" data-id="{{item._id}}">{{item.onSale ? '上架中（点一下下架）' : '已下架（点一下上架）'}}</view>
+    </view>
+  </view>
+
+  <view class="safe"></view>
+</view>
+
+<view class="bar"><view class="add" hover-class="add-press" bindtap="add">新增商品</view></view>

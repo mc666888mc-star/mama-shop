@@ -1,0 +1,8 @@
+<view class="sh-wrap {{show ? 'sh-open' : ''}}">
+  <view class="sh-mask" bindtap="close" catchtouchmove="noop"></view>
+  <view class="sh-panel">
+    <view class="sh-grab"></view>
+    <view wx:if="{{title}}" class="sh-title">{{title}}</view>
+    <slot></slot>
+  </view>
+</view>

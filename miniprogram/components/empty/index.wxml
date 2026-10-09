@@ -1,0 +1,6 @@
+<view class="em">
+  <image class="em-ico" src="/images/icons/{{icon}}.svg" />
+  <view class="em-t">{{title}}</view>
+  <view wx:if="{{desc}}" class="em-d">{{desc}}</view>
+  <view wx:if="{{btn}}" class="em-btn" hover-class="em-press" bindtap="onTap">{{btn}}</view>
+</view>

@@ -1,0 +1,25 @@
+.pg { padding: 0 32rpx; }
+.seg { position: relative; display: flex; padding: 6rpx; margin-bottom: 28rpx; border-radius: 100rpx; background: rgba(118, 118, 128, 0.12); }
+.seg-thumb { position: absolute; left: 6rpx; top: 6rpx; bottom: 6rpx; width: calc((100% - 12rpx) / 5); border-radius: 100rpx; background: #fff; box-shadow: 0 4rpx 14rpx rgba(0, 0, 0, 0.12); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.seg-i { position: relative; z-index: 1; flex: 1; height: 68rpx; line-height: 68rpx; text-align: center; font-size: 26rpx; color: #6E6E73; font-weight: 500; transition: color 0.2s; }
+.seg-on { color: #1D1D1F; font-weight: 600; }
+
+.o { margin-bottom: 20rpx; padding: 28rpx 28rpx 24rpx; border-radius: 40rpx; background: #fff; }
+.o-top { display: flex; align-items: center; justify-content: space-between; }
+.o-no { font-size: 30rpx; font-weight: 600; }
+.o-st { font-size: 27rpx; font-weight: 600; }
+.s0 { color: #FF9500; } .s1 { color: #0071E3; } .s2 { color: #0071E3; } .s3 { color: #8E8E93; }
+.o-time { margin: 4rpx 0 12rpx; font-size: 24rpx; color: #8E8E93; }
+.o-line { display: flex; align-items: center; padding: 14rpx 0; }
+.o-img { width: 112rpx; height: 112rpx; border-radius: 22rpx; overflow: hidden; flex-shrink: 0; }
+.o-nm { flex: 1; min-width: 0; margin: 0 20rpx; font-size: 28rpx; line-height: 40rpx; }
+.o-right { text-align: right; flex-shrink: 0; }
+.o-p { font-size: 28rpx; font-weight: 600; }
+.o-q { font-size: 25rpx; color: #8E8E93; margin-top: 4rpx; }
+.o-exp { display: flex; align-items: center; justify-content: space-between; margin-top: 12rpx; padding: 0 24rpx; height: 80rpx; border-radius: 22rpx; background: rgba(0, 113, 227, 0.08); transition: transform 0.2s, opacity 0.2s; }
+.o-exp-t { font-size: 27rpx; color: #1D1D1F; }
+.o-exp-c { font-size: 27rpx; font-weight: 600; color: #0071E3; }
+.o-foot { margin-top: 16rpx; padding-top: 20rpx; border-top: 1rpx solid rgba(60, 60, 67, 0.12); display: flex; align-items: center; justify-content: space-between; }
+.o-sum { font-size: 26rpx; color: #6E6E73; }
+.o-total { font-size: 34rpx; font-weight: 700; color: #1D1D1F; margin-left: 6rpx; }
+.o-pay { height: 68rpx; padding: 0 36rpx; line-height: 68rpx; border-radius: 34rpx; background: #0071E3; color: #fff; font-size: 28rpx; font-weight: 600; box-shadow: 0 6rpx 18rpx rgba(0, 113, 227, 0.28); transition: transform 0.2s, opacity 0.2s; }

@@ -1,0 +1,44 @@
+<nav-bar mode="float" />
+
+<view wx:if="{{loading}}" class="sk sk-img"></view>
+
+<empty wx:elif="{{!p}}" icon="bag-lg" title="找不到这个商品" desc="可能已经下架了" btn="回首页" bind:action="goHome" />
+
+<block wx:else>
+  <view class="gallery">
+    <swiper wx:if="{{p.imgs.length}}" class="gal" bindchange="onSwipe" circular="{{p.imgs.length > 1}}">
+      <swiper-item wx:for="{{p.imgs}}" wx:key="*this">
+        <image class="gal-img" src="{{item}}" mode="aspectFill" bindtap="preview" data-i="{{index}}" />
+      </swiper-item>
+    </swiper>
+    <view wx:else class="gal">
+      <thumb emoji="{{p.emoji}}" tone="{{p.tone}}" seed="{{p._id}}" size="300rpx" />
+    </view>
+    <view wx:if="{{p.imgs.length > 1}}" class="dots">
+      <view wx:for="{{p.imgs}}" wx:key="*this" class="dot {{current === index ? 'dot-on' : ''}}"></view>
+    </view>
+  </view>
+
+  <view class="panel">
+    <view class="p-name">{{p.name}}</view>
+    <view class="p-price"><text class="yen">¥</text>{{p.priceText}}</view>
+    <view wx:if="{{p.offShelf}}" class="p-note">这件商品已下架</view>
+    <view wx:elif="{{p.soldOut}}" class="p-note">暂时售罄，过几天再来看看</view>
+    <view wx:elif="{{p.lowStock}}" class="p-note p-warn">仅剩 {{p.stock}} 件</view>
+    <view wx:if="{{p.desc}}" class="p-desc">{{p.desc}}</view>
+    <view class="p-qty">
+      <view class="p-qty-l">数量</view>
+      <stepper value="{{qty}}" min="{{1}}" max="{{p.stock > 0 ? p.stock : 1}}" bind:change="onQty" />
+    </view>
+    <view class="safe"></view>
+  </view>
+
+  <view class="bar glass">
+    <view class="bar-cart" hover-class="press" bindtap="goCart">
+      <image class="bar-cart-ico" src="/images/icons/cart-ink.svg" />
+      <view wx:if="{{cartCount > 0}}" class="bar-badge">{{cartCount > 99 ? '99+' : cartCount}}</view>
+    </view>
+    <view class="btn btn-soft bar-btn {{p.soldOut || p.offShelf ? 'disabled' : ''}}" hover-class="press" bindtap="addCart">加入购物车</view>
+    <view class="btn btn-primary bar-btn {{p.soldOut || p.offShelf ? 'disabled' : ''}}" hover-class="press" bindtap="buyNow">{{p.soldOut ? '已售罄' : '立即购买'}}</view>
+  </view>
+</block>

@@ -1,0 +1,10 @@
+:host { display: block; width: 100%; height: 100%; }
+.th { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.th0 { background: linear-gradient(145deg, #EAF2FF, #CFE1FF); }
+.th1 { background: linear-gradient(145deg, #FFF2E7, #FFDABF); }
+.th2 { background: linear-gradient(145deg, #EAF8F0, #C8EED7); }
+.th3 { background: linear-gradient(145deg, #F4EDFF, #DECDFF); }
+.th4 { background: linear-gradient(145deg, #FFF9DF, #FFECA9); }
+.th5 { background: linear-gradient(145deg, #FFEAEF, #FFCBD7); }
+.th-img { width: 100%; height: 100%; display: block; }
+.th-emo { line-height: 1; filter: drop-shadow(0 10rpx 18rpx rgba(0, 0, 0, 0.14)); }

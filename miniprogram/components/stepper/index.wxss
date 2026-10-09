@@ -1,0 +1,9 @@
+.st { display: inline-flex; align-items: center; padding: 6rpx; border-radius: 100rpx; background: rgba(118, 118, 128, 0.12); box-sizing: border-box; }
+.st-b { width: 68rpx; height: 68rpx; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.10); box-sizing: border-box; transition: transform 0.15s; }
+.st-i { width: 30rpx; height: 30rpx; }
+.st-n { min-width: 76rpx; text-align: center; font-size: 32rpx; font-weight: 600; color: #1D1D1F; }
+.st-dis { opacity: 0.35; }
+.st-press { transform: scale(0.9); }
+.st-s .st-b { width: 54rpx; height: 54rpx; }
+.st-s .st-i { width: 26rpx; height: 26rpx; }
+.st-s .st-n { min-width: 62rpx; font-size: 28rpx; }

@@ -1,6 +1,13 @@
 # 妈妈小店 · 微信小程序
 
 给妈妈在微信里卖洗碗布、洗洁精等日用品的小程序商城。
+前端 UI 由 Claude 按苹果设计规范完成（`docs-claude/UI设计规范.md`），Miku 负责合并与工程链路。
+
+## 两种运行模式（改一个文件）
+`miniprogram/utils/config.js`：
+- `envId` 留空 = **演示模式**：数据存在手机本地，下单、转账提示、妈妈后台全流程都能走通，
+  **不依赖云开发**——现在就能扫码体验。
+- `envId` 填了云环境 ID = 走云函数 `shop`。
 
 ## 完全无电脑开发流水线（本项目专用）
 
@@ -29,10 +36,14 @@ tcb functions:deploy --envId <envId> # 逐个部署 cloudfunctions/ 下的函数
 
 ### 云开发环境开通
 - 首次开通：手机浏览器打开云开发 Web 控制台 `cloud.weixin.qq.com`，
-用小程序管理员微信扫码登录 → 创建环境 → 把 **环境 ID** 填到 `miniprogram/app.js` 的 `CLOUD_ENV_ID`。
-- 数据库集合：`products`、`orders`、`addresses`、`users`（字段见《设计需求书》）。
-- 妈妈的 openid：先跑通 `login` 云函数，从日志里拿到妈妈微信的 openid，
-填到各云函数 `ADMIN_OPENIDS` 数组，重新部署。
+用小程序管理员微信扫码登录 → 创建环境 → 把 **环境 ID** 填到 `miniprogram/utils/config.js` 的 `envId`。
+- 只需部署 **2 个云函数**：`shop`（业务分发，接口见 `docs-claude/对接说明.md` 的 action 表）、
+`orderPrepay`（二期微信支付占位）。
+- 数据库集合：`products`、`orders`、`addresses`、`users`、`counters`（订单号序号，自动建）。
+`orders` 表新增字段：`orderNo`（短订单号 MMDD-序号，转账备注用）、`remark`、`items[].image`。
+- 云存储权限设为"所有用户可读，仅创建者可写"，否则买家看不到商品图。
+- 妈妈的 openid：先跑通 `shop` 的 `login`，从 `users` 表里拿到妈妈的 openid，
+填到 `cloudfunctions/shop/index.js` 的 `ADMIN_OPENIDS`，重新部署。
 
 ### 支付（铁律）
 - **上线必须接微信支付**，这是门面，没得商量。
@@ -40,30 +51,27 @@ tcb functions:deploy --envId <envId> # 逐个部署 cloudfunctions/ 下的函数
 - 二期（上线）：前提 → 小程序主体转**个体工商户**（执照免费办）+ 开通**微信支付商户号**；
 实现 → 云函数 `orderPrepay` 内调微信支付 APIv3 统一下单（JSAPI），
 商户号/密钥/证书走云函数**环境变量**，绝不写进代码；
-前端 `app.globalData.payMode` 切到 `'wxpay'`，调用 `wx.requestPayment`（代码已预留）。
+前端 `miniprogram/utils/config.js` 里 `payMode` 切到 `'wxpay'`，调用 `wx.requestPayment`（代码已预留）。
 - 金额一律用"分"存储，前端展示除以 100。
 
 ### 目录结构
 ```
-miniapp/
-├── project.config.json # 项目配置（AppID 发布前替换真实值）
-├── miniprogram/ # 前端：WXML + WXSS + JS
-│ ├── app.js / app.json / app.wxss
-│ └── pages/
-│ ├── home/ # 首页（商品流+搜索）
-│ ├── product/ # 商品详情
-│ ├── checkout/ # 下单页
-│ ├── orders/ # 订单列表
-│ ├── profile/ # 我的（含妈妈后台入口）
-│ ├── admin-products/ # 妈妈：商品管理
-│ └── admin-orders/ # 妈妈：订单管理
-├── cloudfunctions/ # 云函数（Node.js）
-│ ├── login/ # 拿 openid、判管理员
-│ ├── productList / productGet / productSave / productToggleSale
-│ ├── orderCreate / orderList / orderUpdateStatus
-│ └── orderPrepay/ # 微信支付统一下单占位
+├── project.config.json        # 项目配置（AppID 发布前替换真实值）
+├── miniprogram/               # 前端（Claude 设计，苹果规范）
+│   ├── app.js / app.json / app.wxss
+│   ├── custom-tab-bar/        # 悬浮玻璃胶囊 tabBar
+│   ├── components/            # nav-bar / thumb / empty / sheet / stepper
+│   ├── utils/                 # config(集中配置) / api(统一入口) / mock(演示数据)
+│   └── pages/
+│       ├── home/ detail/ cart/ checkout/ pay/ orders/ mine/  # 买家端
+│       └── admin/orders/ admin/products/ admin/edit/         # 妈妈后台
+├── cloudfunctions/
+│   ├── shop/                  # 唯一业务云函数，按 event.action 分发
+│   └── orderPrepay/           # 【二期】微信支付统一下单占位
+├── docs/                      # 需求书 v2
+├── docs-claude/               # Claude 的 UI 设计规范 + 前端对接说明
 └── scripts/
-└── preview.js # 云 VM 生成预览二维码（miniprogram-ci）
+    └── preview.js             # 云 VM 生成预览二维码（miniprogram-ci）
 ```
 
 ### 分工
